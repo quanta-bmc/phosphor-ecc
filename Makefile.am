@@ -8,7 +8,6 @@ noinst_LTLIBRARIES = libecc.la
 libecc_la_LDFLAGS = -static
 libecc_la_LIBADD = \
 	-lstdc++fs \
-	-lquanta_dbus \
 	$(SDBUSPLUS_LIBS) \
 	$(SDEVENTPLUS_LIBS) \
 	$(PHOSPHOR_DBUS_INTERFACES_LIBS) \
