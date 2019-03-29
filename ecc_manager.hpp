@@ -5,7 +5,7 @@
 #include <sdeventplus/clock.hpp>
 #include <sdeventplus/event.hpp>
 #include <sdeventplus/utility/timer.hpp>
-#include <xyz/openbmc_project/Sensor/Memory/MemoryECC/server.hpp>
+#include <xyz/openbmc_project/Memory/MemoryECC/server.hpp>
 
 namespace phosphor
 {
@@ -15,13 +15,13 @@ namespace memory
 template <typename... T>
 using ServerObject = typename sdbusplus::server::object::object<T...>;
 
-using EccInterface = sdbusplus::xyz::openbmc_project::Sensor::Memory::server::MemoryECC;
+using EccInterface = sdbusplus::xyz::openbmc_project::Memory::server::MemoryECC;
 using EccObject = ServerObject<EccInterface>;
 /** @class 
  *  @brief Manages ECC
  */
 class ECC : sdbusplus::server::object::object<
-                sdbusplus::xyz::openbmc_project::Sensor::Memory::server::MemoryECC>
+                sdbusplus::xyz::openbmc_project::Memory::server::MemoryECC>
 {
   public:
     ECC() = delete;
@@ -39,7 +39,7 @@ class ECC : sdbusplus::server::object::object<
      */
     ECC(sdbusplus::bus::bus &bus, const std::string &objPath) :
             sdbusplus::server::object::object<
-                sdbusplus::xyz::openbmc_project::Sensor::Memory::server::MemoryECC>(bus, objPath.c_str()),
+                sdbusplus::xyz::openbmc_project::Memory::server::MemoryECC>(bus, objPath.c_str()),
                 _bus(bus), _event(sdeventplus::Event::get_default()) 
                 ,_timer(_event, std::bind(&ECC::read, this))
     {

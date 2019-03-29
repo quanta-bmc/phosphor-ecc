@@ -154,6 +154,8 @@ void ECC::checkEccLogFull()
         isReached = true;
         EccInterface::isLoggingLimitReached(isReached);
         controlEDACReport(CLOSE_EDAC_REPORT);
+        //set ECC state
+        EccInterface::state(MemoryECC::ECCStatus::LogFulled);
     }
 }
 
@@ -177,7 +179,8 @@ void ECC::checkCe_count()
         EccInterface::ceCount(previousCeCounter);
         //add SEl log
         addSELLog(errorMsg, OBJPATH, eventData, assert, selBMCGenID);
-       
+        //set ECC state
+        EccInterface::state(MemoryECC::ECCStatus::CE);
     }
 }
 
@@ -201,7 +204,8 @@ void ECC::checkUe_count()
         EccInterface::ueCount(previousUeCounter);
         //add SEl log
         addSELLog(errorMsg, OBJPATH, eventData, assert, selBMCGenID);
-        
+        //set ECC state
+        EccInterface::state(MemoryECC::ECCStatus::UE);
     }
 }
 
