@@ -155,7 +155,7 @@ void ECC::checkEccLogFull()
         EccInterface::isLoggingLimitReached(isReached);
         controlEDACReport(CLOSE_EDAC_REPORT);
         //set ECC state
-        EccInterface::state(MemoryECC::ECCStatus::LogFulled);
+        EccInterface::state(MemoryECC::ECCStatus::LogFull);
     }
 }
 
