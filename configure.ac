@@ -31,7 +31,7 @@ LT_INIT
 
 # Dbus service name
 AC_ARG_VAR(BUSNAME, [The Dbus busname to own])
-AS_IF([test "x$BUSNAME" == "x"], [BUSNAME="xyz.openbmc_project.Memory.MemoryECC"])
+AS_IF([test "x$BUSNAME" == "x"], [BUSNAME="xyz.openbmc_project.ECC"])
 AC_DEFINE_UNQUOTED([BUSNAME], ["$BUSNAME"], [The Dbus busname to own])
 
 # Service dbus root
