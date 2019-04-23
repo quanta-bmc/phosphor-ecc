@@ -31,17 +31,17 @@ LT_INIT
 
 # Dbus service name
 AC_ARG_VAR(BUSNAME, [The Dbus busname to own])
-AS_IF([test "x$BUSNAME" == "x"], [BUSNAME="xyz.openbmc_project.ECC"])
+AS_IF([test "x$BUSNAME" == "x"], [BUSNAME="xyz.openbmc_project.memory.ECC"])
 AC_DEFINE_UNQUOTED([BUSNAME], ["$BUSNAME"], [The Dbus busname to own])
 
 # Service dbus root
 AC_ARG_VAR(OBJROOT, [The Dbus object root path])
-AS_IF([test "x$OBJROOT" == "x"], [OBJROOT="/xyz/openbmc_project/memory/"])
+AS_IF([test "x$OBJROOT" == "x"], [OBJROOT="/xyz/openbmc_project/metrics/memory/"])
 AC_DEFINE_UNQUOTED([OBJROOT], ["$OBJROOT"], [The Dbus object path])
 
 # Service dbus root
 AC_ARG_VAR(OBJPATH, [The Dbus object path])
-AS_IF([test "x$OBJPATH" == "x"], [OBJPATH="/xyz/openbmc_project/memory/BmcECC"])
+AS_IF([test "x$OBJPATH" == "x"], [OBJPATH="/xyz/openbmc_project/metrics/memory/BmcECC"])
 AC_DEFINE_UNQUOTED([OBJPATH], ["$OBJPATH"], [The Dbus object path])
 
 # sysfs root path
