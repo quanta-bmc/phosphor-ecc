@@ -1,5 +1,7 @@
 #include "config.h"
+
 #include "ecc_manager.hpp"
+
 #include <iostream>
 #include <sdbusplus/bus.hpp>
 #include <sdbusplus/sdbus.hpp>

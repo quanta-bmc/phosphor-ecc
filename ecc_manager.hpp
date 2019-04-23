@@ -17,7 +17,7 @@ using ServerObject = typename sdbusplus::server::object::object<T...>;
 
 using EccInterface = sdbusplus::xyz::openbmc_project::Memory::server::MemoryECC;
 using EccObject = ServerObject<EccInterface>;
-/** @class 
+/** @class
  *  @brief Manages ECC
  */
 class ECC : sdbusplus::server::object::object<
@@ -26,25 +26,25 @@ class ECC : sdbusplus::server::object::object<
   public:
     ECC() = delete;
     ~ECC() = default;
-    ECC(const ECC &) = delete;
-    ECC &operator=(const ECC &) = delete;
-    ECC(ECC &&) = default;
-    ECC &operator=(ECC &&) = default;
+    ECC(const ECC&) = delete;
+    ECC& operator=(const ECC&) = delete;
+    ECC(ECC&&) = default;
+    ECC& operator=(ECC&&) = default;
 
-    /** @brief Constructs 
+    /** @brief Constructs
      *
      * @param[in] bus     - Handle to system dbus
-     * @param[in] objPath - The Dbus path 
+     * @param[in] objPath - The Dbus path
      * @param[in] manager - Reference to Manager
      */
-    ECC(sdbusplus::bus::bus &bus, const std::string &objPath) :
-            sdbusplus::server::object::object<
-                sdbusplus::xyz::openbmc_project::Memory::server::MemoryECC>(bus, objPath.c_str()),
-                _bus(bus), _event(sdeventplus::Event::get_default()) 
-                ,_timer(_event, std::bind(&ECC::read, this))
-    {
-        // Nothing to do here
-    };
+    ECC(sdbusplus::bus::bus& bus, const std::string& objPath) :
+        sdbusplus::server::object::object<
+            sdbusplus::xyz::openbmc_project::Memory::server::MemoryECC>(
+            bus, objPath.c_str()),
+        _bus(bus), _event(sdeventplus::Event::get_default()),
+        _timer(_event, std::bind(&ECC::read, this)){
+            // Nothing to do here
+        };
 
     int64_t previousCeCounter = 0;
     int64_t previousUeCounter = 0;
@@ -69,21 +69,18 @@ class ECC : sdbusplus::server::object::object<
     std::string getValue(std::string);
 
     void writeValue(std::string, std::string);
-    //set ce_count to dbus
+    // set ce_count to dbus
     void checkCe_count();
-    //set ce_count to dbus
+    // set ce_count to dbus
     void checkUe_count();
-    //set eccErrorCount to dbus
+    // set eccErrorCount to dbus
     void checkEccLogFull();
-    //reset counter
+    // reset counter
     void resetCounter();
-    //set maxECCLog value
+    // set maxECCLog value
     void getMaxLogValue();
-    //add sel log
-    void addSELLog(std::string,
-                   std::string,
-                   std::vector<uint8_t>,
-                   bool,
+    // add sel log
+    void addSELLog(std::string, std::string, std::vector<uint8_t>, bool,
                    uint16_t);
 };
 
